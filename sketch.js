@@ -1,6 +1,6 @@
 
 let sound, amp, cnv;
-let imgSelecter = document.querySelector('#imgStuff');
+let imgSelecter = document.getElementById('imgStuff');
 
 function preload() {
   //replace this sound with something we can distribute
@@ -30,7 +30,6 @@ function draw() {
   amp.smooth (0.8);
   //maps one range of values to another range of values
   level = map(level, 0, 0.2, 0, 255);
-  //background(level, 0, 0);
   imgSelecter.style.width = level + '%';
-  text('click to play', width/2, height/2);
+  text("click to play", width/2, height/2);
 }
