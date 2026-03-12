@@ -4,3 +4,10 @@
     align-items:center;
     height:100vh;
 }
+
+#imgStuff {
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+    width:100%;
+}
