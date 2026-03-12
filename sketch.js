@@ -26,6 +26,8 @@ function playSound() {
  
 function draw() {
   let level = amp.getLevel();
+  background (220)
+  amp.smooth (0.8);
   //maps one range of values to another range of values
   level = map(level, 0, 0.2, 0, 255);
   //background(level, 0, 0);
