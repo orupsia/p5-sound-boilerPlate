@@ -26,10 +26,10 @@ function playSound() {
  
 function draw() {
   let level = amp.getLevel();
-  background (220)
+  background (139, 0, 0);
   amp.smooth (0.8);
   //maps one range of values to another range of values
   level = map(level, 0, 0.2, 0, 255);
   imgSelecter.style.width = level + '%';
-  text("click to play", width/2, height/2);
+  text("scream.org", width/2, height/2);
 }
