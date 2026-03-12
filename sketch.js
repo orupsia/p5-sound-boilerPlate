@@ -31,5 +31,5 @@ function draw() {
   //maps one range of values to another range of values
   level = map(level, 0, 0.2, 0, 255);
   imgSelecter.style.width = level + '%';
-  text("scream.org", width/2, height/2);
+  text("click to yell", width/2, height/2);
 }
