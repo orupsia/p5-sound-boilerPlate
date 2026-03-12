@@ -1,32 +1,34 @@
-let mic, delay, filter;
+
+let sound, amp, cnv;
+let imgSelecter = document.querySelector('#imgStuff');
+
+function preload() {
+  //replace this sound with something we can distribute
+  sound = loadSound('sound/audioforp5jsmp4.mp4');
+}
 
 function setup() {
-  describe('a sketch that accesses the user\'s microphone and connects it to a delay line.')
-  let cnv = createCanvas(100, 100);
-  cnv.parent('p5-stuff');
-  cnv.mousePressed(startMic);
-  background(220);
-  
-  mic = new p5.AudioIn();
-  delay = new p5.Delay(0.74, 0.1);
-  filter = new p5.Biquad(600, "bandpass");
-  
-  mic.disconnect();
-  mic.connect(delay);
-  delay.disconnect();
-  delay.connect(filter);
-  
+  cnv = createCanvas(400, 400);
+  cnv.parent('p5-stuff')
+  cnv.mousePressed(playSound);
   textAlign(CENTER);
-  textWrap(WORD);
-  textSize(10);
-  text('click to open mic, watch out for feedback', 0, 20, 100);
+  fill(255);
+  amp = new p5.Amplitude();
+  sound.connect(amp);
+  //select DOM element using p5's select function
+  //let imgSelector = Document.querySelector('#imgStuff');
+  describe('The color of the background changes based on the amplitude of the sound.');
 }
-
-function startMic() {
-  mic.start();
+ 
+function playSound() {
+  sound.play();
 }
-
+ 
 function draw() {
-  d = map(mouseX, 0, width, 0.1, 0.5);
-  delay.delayTime(d);
+  let level = amp.getLevel();
+  //maps one range of values to another range of values
+  level = map(level, 0, 0.2, 0, 255);
+  //background(level, 0, 0);
+  imgSelecter.style.width = level + '%';
+  text('click to play', width/2, height/2);
 }
